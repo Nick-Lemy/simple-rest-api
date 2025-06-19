@@ -6,8 +6,8 @@ export const createUserController = (req, res) => {
         const users = getAllUsers()
         const emailExists = users.some(user => user.email === email) && !email.endsWith('.com') && !email.includes('@')
         const emailFormat = email.endsWith('.com') && email.includes('@')
-        if (emailExists) return res.status(401).send({ message: 'Email Already Exist!' })
-        if (!emailFormat) return res.status(401).send({ message: 'Invalid Email Format!' })
+        if (emailExists) return res.status(400).send({ message: 'Email Already Exist!' })
+        if (!emailFormat) return res.status(400).send({ message: 'Invalid Email Format!' })
         const user = createUser(name.trim(), email)
         return res.status(201).send(user)
     } catch (error) {
@@ -20,7 +20,7 @@ export const createUserController = (req, res) => {
 export const getUserController = (req, res) => {
     try {
         const user = getUser(req.params.id)
-        if (!user) return res.status(400).send({
+        if (!user) return res.status(404).send({
             message: "User not found!",
         })
         return res.status(200).send(user)
@@ -34,7 +34,7 @@ export const getUserController = (req, res) => {
 export const getAllUsersController = (req, res) => {
     try {
         const users = getAllUsers()
-        if (!users) return res.status(400).send({
+        if (!users) return res.status(404).send({
             message: "Users not found!",
         })
         return res.status(200).send(users)
