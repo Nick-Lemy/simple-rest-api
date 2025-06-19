@@ -54,7 +54,7 @@ yarn dev # or npm run dev
 
 | params     | Type     | Description                |
 | :------- | :------- | :------------------------- |
-| `id`   | string   | **Required**. id of the user|
+| `id`   | integer / number   | **Required**. id of the user|
 
 ### Create user
 
