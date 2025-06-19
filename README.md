@@ -42,13 +42,13 @@ yarn dev # or npm run dev
 
 ### Get all users
 
-```http
+```
   GET /users
 ```
 
 ### Get single user
 
-```http
+```
   GET /users/${id}
 ```
 
@@ -58,7 +58,7 @@ yarn dev # or npm run dev
 
 ### Create user
 
-```http
+```
   PSOT /users
 ```
 
