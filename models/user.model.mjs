@@ -13,7 +13,6 @@ export const createUser = (name, email) => {
 export const getUser = (id) => {
     try {
         const user = users.find(usr => usr.id === Number(id))
-        if (!user) throw new Erro('User Not Found!')
         return user
     } catch (error) {
         console.error(`Error while getting a user: ${error}`)
