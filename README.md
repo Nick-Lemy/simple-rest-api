@@ -38,7 +38,7 @@ yarn dev # or npm run dev
 
 ```
 
-## API Reference
+## API Reference and Curl test commands
 
 ### Create user
 
