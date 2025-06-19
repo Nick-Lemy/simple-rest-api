@@ -4,7 +4,7 @@ export const createUserController = (req, res) => {
     try {
         const { email, name } = req.body
         const users = getAllUsers()
-        const emailExists = users.some(user => user.email === email) && !email.endsWith('.com') && !email.includes('@')
+        const emailExists = users.some(user => user.email === email)
         const emailFormat = email.endsWith('.com') && email.includes('@')
         if (emailExists) return res.status(400).send({ message: 'Email Already Exist!' })
         if (!emailFormat) return res.status(400).send({ message: 'Invalid Email Format!' })
