@@ -2,8 +2,13 @@ import { createUser, getAllUser as getAllUsers, getUser } from "../models/user.m
 
 export const createUserController = (req, res) => {
     try {
-        const user = createUser(req.body)
-        if(!user) return res.status(401).send({message: 'User Already Exist!'})
+        const { email, name } = req.body
+        const users = getAllUsers()
+        const emailExists = users.some(user => user.email === email) && !email.endsWith('.com') && !email.includes('@')
+        const emailFormat = email.endsWith('.com') && email.includes('@')
+        if (emailExists) return res.status(401).send({ message: 'Email Already Exist!' })
+        if (!emailFormat) return res.status(401).send({ message: 'Invalid Email Format!' })
+        const user = createUser(name.trim(), email)
         return res.status(201).send(user)
     } catch (error) {
         return res.status(500).send({

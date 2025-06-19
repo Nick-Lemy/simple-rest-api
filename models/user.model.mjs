@@ -1,10 +1,8 @@
 const users = []
 
-export const createUser = ({ name, email }) => {
+export const createUser = (name, email) => {
     try {
         const newUser = { id: users.length + 1, name, email }
-        const emailValidation = users.some(user=> user.email === email)
-        if(emailValidation) return console.log('Email already Exists!')
         users.push(newUser)
         return newUser
     } catch (error) {
