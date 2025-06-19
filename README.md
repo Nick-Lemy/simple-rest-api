@@ -40,32 +40,43 @@ yarn dev # or npm run dev
 
 ## API Reference
 
-### Get all users
-
-```
-  GET /users
-```
-
-### Get single user
-
-```
-  GET /users/${id}
-```
-
-| params     | Type     | Description                |
-| :------- | :------- | :------------------------- |
-| `id`   | integer / number   | **Required**. id of the user|
-
 ### Create user
 
-```
-  PSOT /users
+`POST /users`
+
+```bash
+curl -X POST http://localhost:4321/users \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Jane Doe",
+    "email": "jane.doe@example.com"
+}'
 ```
 
 | body     | Type     | Description                |
 | :------- | :------- | :------------------------- |
 | `name`   | string   | **Required**. name of the user|
 | `email`  | string   | **Required**. email of the user |
+
+### Get single user
+
+`GET /users/${id}`
+
+```bash
+curl -X GET http://localhost:4321/users/1
+```
+
+| params     | Type     | Description                |
+| :------- | :------- | :------------------------- |
+| `id`   | integer / number   | **Required**. id of the user|
+
+### Get all users
+
+`GET /users`
+
+```bash
+curl -X GET http://localhost:4321/users
+```
 
 ## Feedback
 
